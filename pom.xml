@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>pl.ivmx.mappum</groupId>
+	<artifactId>mule</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>Mappum Component for Mule</name>
+
+	<modules>
+		<module>mule-module-mappum</module>
+	</modules>
+
+	<properties>
+		<mappum-version>1.0</mappum-version>
+		<mule-mappum-version>1.0-SNAPSHOT</mule-mappum-version>
+		<mule-version>2.2.1</mule-version>
+		<commons-logging-version>1.1</commons-logging-version>
+		<mappum-version>1.0</mappum-version>
+		<jruby-version>1.2.0</jruby-version>
+		<jsr223-version>20080611</jsr223-version>
+		<eclipse-plugin-version>2.5</eclipse-plugin-version>
+		<jdk-version>1.6</jdk-version>
+		<jdk-name>jdk6</jdk-name>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>codehaus</id>
+			<name>Codehaus Maven 2.x Release Repository</name>
+			<url>http://repository.codehaus.org</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>codehaus-snapshots</id>
+			<name>Codehaus Maven 2.x Snapshots Repository</name>
+			<url>http://snapshots.repository.codehaus.org</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>apache-plugin-snapshots</id>
+			<name>Apache Maven Plugins Snapshot Repository</name>
+			<url>http://people.apache.org/maven-snapshot-repository</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk-version}</source>
+					<target>${jdk-version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
