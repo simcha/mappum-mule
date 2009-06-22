@@ -216,6 +216,5 @@ public class MappumComponent extends AbstractComponent {
 					.scriptExecutionErrorMessage(re.getException()
 							.getBacktrace().toString()), this);
 		}
-
 	}
 }
