@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>pl.ivmx.mappum.mule.example</groupId>
+	<artifactId>mappum-example-mule-sc</artifactId>
+	<packaging>jar</packaging>
+	<version>${mule-mappum-version}</version>
+	<name>Mappum Example Service Component for Mule</name>
+
+	<parent>
+		<groupId>pl.ivmx.mappum</groupId>
+		<artifactId>mule</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>${commons-httpclient-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mule</groupId>
+			<artifactId>mule-core</artifactId>
+			<version>${mule-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.modules</groupId>
+			<artifactId>mule-module-spring-config</artifactId>
+			<version>${mule-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-vm</artifactId>
+			<version>${mule-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-stdio</artifactId>
+			<version>${mule-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-http</artifactId>
+			<version>${mule-version}</version>
+		</dependency>
+		<!-- Better testing of XML -->
+		<dependency>
+			<groupId>xmlunit</groupId>
+			<artifactId>xmlunit</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.tests</groupId>
+			<artifactId>mule-tests-functional</artifactId>
+			<version>${mule-version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-servlet_2.5_spec</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- mappum module -->
+		<dependency>
+			<groupId>pl.ivmx.mappum</groupId>
+			<artifactId>mappum-core</artifactId>
+			<version>${mappum-version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>pl.ivmx.mappum.mule</groupId>
+			<artifactId>mule-module-mappum</artifactId>
+			<version>${version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<defaultGoal>install</defaultGoal>
+		<finalName>${artifactId}</finalName>
+
+		<!--
+			Allow config files to be in the "conf" directory to make it easier
+			for users to find them.
+		-->
+		<resources>
+			<resource>
+				<directory>conf</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+</project>

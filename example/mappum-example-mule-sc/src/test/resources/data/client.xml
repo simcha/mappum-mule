@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<client>
+  <title>sir</title>
+  <id>ASDDSA</id>
+  <surname>Skoryski</surname>
+  <sex_id>2</sex_id>
+  <phones>21311231</phones>
+  <phones>21311232</phones>
+  <emails>j@j.com</emails>
+  <emails>k@k.com</emails>
+  <emails>l@l.com</emails>
+  <main_phone>09876567</main_phone>
+  <main_phone_type>mobile</main_phone_type>
+  <address>
+    <street>Victoria</street>
+  </address>
+</client>
