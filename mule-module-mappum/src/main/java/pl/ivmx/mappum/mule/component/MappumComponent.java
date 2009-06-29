@@ -181,14 +181,14 @@ public class MappumComponent extends AbstractComponent {
 
 			StringBuffer params = new StringBuffer();
 			params.append("\n");
-			params.append("require 'xml_transform'");
+			params.append("require 'mappum/xml_transform'");
 			params.append("\n\n");
 			params.append("wl = Mappum::WorkdirLoader.new(\"");
 			params.append(getSchemaFolder());
 			params.append("\", \"");
-			params.append(getGeneratedClassesFolder());
-			params.append("\", \"");
 			params.append(getMapFolder());
+			params.append("\", \"");
+			params.append(getGeneratedClassesFolder());
 			params.append("\")");
 			params.append("\n");
 			params.append("wl.generate_and_require");
