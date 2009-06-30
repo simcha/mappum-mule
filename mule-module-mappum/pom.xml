@@ -160,8 +160,8 @@
 			<version>${mappum-version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jruby</groupId>
-			<artifactId>jruby-complete</artifactId>
+			<groupId>pl.ivmx.mappum</groupId>
+			<artifactId>mappum-jruby-complete</artifactId>
 			<version>${jruby-version}</version>
 		</dependency>
 		<dependency>
