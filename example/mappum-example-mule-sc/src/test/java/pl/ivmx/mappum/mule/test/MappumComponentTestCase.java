@@ -71,7 +71,7 @@ public class MappumComponentTestCase extends FunctionalTestCase {
 		assertFalse(result.getPayload() instanceof NullPayload);
 
 		assertTrue("'new_address' not converted to 'adresse'", result
-				.getPayloadAsString().contains("<adresse>"));
+				.getPayloadAsString().contains("<Adresse>"));
 	}
 
 	public void testNewAddressToAdresseWithoutMapName() throws Exception {
@@ -102,7 +102,7 @@ public class MappumComponentTestCase extends FunctionalTestCase {
 		assertFalse(result.getPayload() instanceof NullPayload);
 
 		assertTrue("'address' not converted to 'adresse'", result
-				.getPayloadAsString().contains("<adresse>"));
+				.getPayloadAsString().contains("<Adresse>"));
 	}
 
 	public void testHttpPersonToClient() throws Exception {
@@ -248,7 +248,7 @@ public class MappumComponentTestCase extends FunctionalTestCase {
 
 			assertNotNull("No value returned from web service", retVal);
 			assertTrue("Mappum not working - xml not translated", retVal
-					.contains("<adresse>"));
+					.contains("<Adresse>"));
 		} catch (Exception e) {
 			logger.error("Error when calling web service", e);
 			fail("Error when calling web service");
@@ -301,7 +301,7 @@ public class MappumComponentTestCase extends FunctionalTestCase {
 
 			assertNotNull("No value returned from web service", retVal);
 			assertTrue("Mappum not working - xml not translated", retVal
-					.contains("<adresse>"));
+					.contains("<Adresse>"));
 		} catch (Exception e) {
 			logger.error("Error when calling web service", e);
 			fail("Error when calling web service");

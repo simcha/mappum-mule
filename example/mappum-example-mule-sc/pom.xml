@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>pl.ivmx.mappum</groupId>
 		<artifactId>mule</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>0.2.0</version>
 	</parent>
 
 	<dependencies>

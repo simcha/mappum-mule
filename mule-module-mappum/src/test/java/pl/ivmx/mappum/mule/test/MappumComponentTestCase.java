@@ -63,7 +63,7 @@ public class MappumComponentTestCase extends FunctionalTestCase {
 		assertFalse(result.getPayload() instanceof NullPayload);
 
 		assertTrue("'new_address' not converted to 'adresse'", result
-				.getPayloadAsString().contains("<adresse>"));
+				.getPayloadAsString().contains("<Adresse>"));
 	}
 
 	public void testNewAddressToAdresseWithoutMapName() throws Exception {
@@ -94,7 +94,7 @@ public class MappumComponentTestCase extends FunctionalTestCase {
 		assertFalse(result.getPayload() instanceof NullPayload);
 
 		assertTrue("'address' not converted to 'adresse'", result
-				.getPayloadAsString().contains("<adresse>"));
+				.getPayloadAsString().contains("<Adresse>"));
 	}
 
 	private String getExample(String file) throws Exception {
