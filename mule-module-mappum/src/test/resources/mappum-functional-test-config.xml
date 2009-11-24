@@ -6,7 +6,7 @@
 	xmlns:mappum="http://www.infovidematrix.pl/schema/mule/mappum/2.2"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="
-	   http://www.infovidematrix.pl/schema/mule/mappum/2.2 http://www.infovidematrix.pl/schema/mule/mappum/2.2/mule-mappum.xsd
+	   http://www.infovidematrix.pl/schema/mule/mappum/2.2 file:target/classes/META-INF/mule-mappum.xsd
        http://www.mulesource.org/schema/mule/core/2.2 http://www.mulesource.org/schema/mule/core/2.2/mule.xsd
        http://www.mulesource.org/schema/mule/vm/2.2 http://www.mulesource.org/schema/mule/vm/2.2/mule-vm.xsd
        http://www.mulesource.org/schema/mule/stdio/2.2 http://www.mulesource.org/schema/mule/stdio/2.2/mule-stdio.xsd
@@ -16,6 +16,9 @@
 
 	<context:property-placeholder location="classpath:mappum-config.properties" />
 
+    <mappum:connector name="mpum" mapFolder="${mapFolder}" 
+				schemaFolder="${schemaFolder}"/>
+
 	<model name="main">
 
 		<service name="testService">
@@ -23,8 +26,7 @@
 				<vm:inbound-endpoint path="in" synchronous="true" />
 			</inbound>
 
-			<mappum:component mapFolder="${mapFolder}"
-				schemaFolder="${schemaFolder}"/>
+			<mappum:component connector-ref="mpum"/>
 
 			<outbound>
 				<pass-through-router>
