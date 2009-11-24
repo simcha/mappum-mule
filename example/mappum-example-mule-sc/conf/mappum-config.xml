@@ -37,7 +37,8 @@
 		connector.
 	-->
 	<configuration defaultSynchronousEndpoints="true" />
-
+        <mappum:connector name="mpun" mapFolder="${mapFolder}"
+                                schemaFolder="${schemaFolder}"/> 
 	<stdio:connector name="SystemStreamConnector"
 		promptMessage="Paste XML to be transformed" messageDelayTime="1000" />
 
@@ -63,8 +64,7 @@
 				<vm:inbound-endpoint path="mappum" />
 			</inbound>
 
-			<mappum:component mapFolder="${mapFolder}"
-				schemaFolder="${schemaFolder}">
+			<mappum:component connector-ref="mpun">
 			</mappum:component>
 
 			<outbound>

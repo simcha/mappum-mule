@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<xsd:schema xmlns="http://www.infovidematrix.pl/schema/mule/mappum/2.2"
+<xsd:schema xmlns="http://www.infovidematrix.pl/schema/mule/mappum/2.2" xmlns:spring="http://www.springframework.org/schema/beans"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mule="http://www.mulesource.org/schema/mule/core/2.2"
 	xmlns:schemadoc="http://www.mulesource.org/schema/mule/schemadoc/2.2"
 	targetNamespace="http://www.infovidematrix.pl/schema/mule/mappum/2.2"
@@ -10,6 +10,8 @@
 		schemaLocation="http://www.mulesource.org/schema/mule/core/2.2/mule.xsd" />
 	<xsd:import namespace="http://www.mulesource.org/schema/mule/schemadoc/2.2"
 		schemaLocation="http://www.mulesource.org/schema/mule/schemadoc/2.2/mule-schemadoc.xsd" />
+	<xsd:import namespace="http://www.springframework.org/schema/beans"
+		schemaLocation="http://www.springframework.org/schema/beans/spring-beans-2.5.xsd" />
 
 	<xsd:annotation>
 		<xsd:documentation>Mappum Module for Mule</xsd:documentation>
@@ -18,9 +20,27 @@
 			<schemadoc:page-title>Mappum Module</schemadoc:page-title>
 		</xsd:appinfo>
 	</xsd:annotation>
-
+	<xsd:element name="connector" type="mappumConnectorType"
+	substitutionGroup="mule:abstract-connector">
+		<xsd:annotation>
+			<xsd:documentation>
+				Defines a mappum repository backed by a Mappum
+				library (defined in Ruby). For one suite of folders.
+				To be reused by different transformers and components.
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
 	<xsd:element name="component" type="mappumComponentType"
 		substitutionGroup="mule:abstract-component">
+		<xsd:annotation>
+			<xsd:documentation>
+				Defines a mappum component backed by a Mappum
+				library (defined in Ruby).
+			</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="transformer" type="mappumTransformerType"
+		substitutionGroup="mule:abstract-transformer">
 		<xsd:annotation>
 			<xsd:documentation>
 				Defines a mappum component backed by a Mappum
@@ -32,28 +52,62 @@
 	<xsd:complexType name="mappumComponentType">
 		<xsd:complexContent>
 			<xsd:extension base="mule:abstractComponentType">
-				<xsd:attribute name="mapFolder" type="xsd:string">
+				<xsd:attribute name="connector-ref" type="xsd:NMTOKEN" use="required">
 					<xsd:annotation>
-						<xsd:documentation>Folder containing maps definied in Mappum
-							DSL</xsd:documentation>
-					</xsd:annotation>
-				</xsd:attribute>
-				<xsd:attribute name="schemaFolder" type="xsd:string">
-					<xsd:annotation>
-						<xsd:documentation>Folder containing XML schmemas for object
-							types definitions, for which
-							maps are defined.</xsd:documentation>
-					</xsd:annotation>
-				</xsd:attribute>
-				<xsd:attribute name="generatedClassesFolder" type="xsd:string">
-					<xsd:annotation>
-						<xsd:documentation>Folder which will contain generated Ruby
-							files
-							for each object type
-							defined in XML Schema files</xsd:documentation>
+						<xsd:documentation>Reference to the MappumRepo bean.</xsd:documentation>
 					</xsd:annotation>
 				</xsd:attribute>
 			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="mappumTransformerType">
+		<xsd:complexContent>
+			<xsd:extension base="mule:abstractTransformerType">
+				<xsd:attribute name="connector-ref" type="xsd:NMTOKEN" use="required">
+					<xsd:annotation>
+						<xsd:documentation>Reference to the MappumRepo bean.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="fromQName" type="xsd:string">
+					<xsd:annotation>
+						<xsd:documentation>Force QName of incoming XML. One can send message with property fromQName instead.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="mapName" type="xsd:string">
+					<xsd:annotation>
+						<xsd:documentation>Force map to use. One can send message with property mapName instead.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="mappumConnectorType">
+		<xsd:complexContent>
+			<xsd:extension base="mule:connectorType">
+		<xsd:attribute name="mapFolder" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>Folder containing maps definied in Mappum
+					DSL</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="schemaFolder" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>Folder containing XML schmemas for object
+					types definitions, for which
+					maps are defined.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="generatedClassesFolder" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>Folder which will contain generated Ruby
+					files
+					for each object type
+					defined in XML Schema files</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
 
